@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      # a new nginx minor (stable/mainline branch) is a deliberate change, not a routine bump
+      - dependency-name: nginx
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
